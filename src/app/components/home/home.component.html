@@ -1,0 +1,35 @@
+
+<div *ngIf="userEmail; else loggedOut">
+<div class="card retro-card">
+  <div class="card-body">
+    <p class="card-text retro-text">Welcome, {{ getUserNameFromEmail()}}</p>
+  </div>
+</div>
+<!-- 
+  <div class="games-list">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div *ngFor="let game of games" class="col">
+        <div class="card h-100">
+          <img [src]="game.img" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ game.title }}</h5>
+            <p class="card-text">{{ game.text }}</p>
+            <button class="btn btn-primary" (click)="playGame(game.path)">Play</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>-->
+</div>
+
+<ng-template #loggedOut>
+  <div class="overlay">
+    <div class="overlay-content">
+      <h1>Welcome to Gaming Room</h1>
+      <p>Please log in or register to continue</p>
+      <button (click)="goTo('/log-in')" class="btn btn-primary me-2">Log In</button>
+      <button (click)="goTo('/register')" class="btn btn-primary ms-2">Register</button>
+    </div>
+  </div>
+</ng-template>
+

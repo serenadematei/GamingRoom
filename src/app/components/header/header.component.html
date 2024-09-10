@@ -1,0 +1,19 @@
+<header>
+  <nav class="navbar">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/home">GAMING ROOM</a>
+      <ul class="nav">
+        <li class="nav-item"><a routerLink="/home" class="nav-link">Home</a></li>
+        <li *ngIf="!user" class="nav-item"><a routerLink="/log-in" class="nav-link">Log in</a></li>
+        <li *ngIf="!user" class="nav-item"><a routerLink="/register" class="nav-link">Register</a></li>
+        <li *ngIf="!user" class="nav-item"><a routerLink="/about-me" class="nav-link">About me</a></li>
+        <li *ngIf="user" class="nav-item"><a routerLink="/about-me" class="nav-link">About me</a></li>
+        <li *ngIf="user" class="nav-item"><a (click)="logout()" class="nav-link">Log out</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+
+

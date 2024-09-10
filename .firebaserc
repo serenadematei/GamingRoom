@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "gamingroom-70020",
+    "gr": "gamingroom-70020"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}
