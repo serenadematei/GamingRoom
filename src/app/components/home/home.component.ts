@@ -47,15 +47,6 @@ export class HomeComponent implements OnInit {
     this.router.navigate([path])
   }
 
-  /*
-  goToLogin(): void {
-    this.router.navigate(['/log-in']);
-  }
-
-  goToRegister(): void {
-    this.router.navigate(['/register']);
-  }*/
-
   playGame(path: string): void {
     this.router.navigate([path]);
   }

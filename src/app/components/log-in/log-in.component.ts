@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { NgIf } from '@angular/common';
 import { AuthErrorCodes } from 'firebase/auth';
+import { addDoc, collection, collectionData, Firestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-log-in',
@@ -29,25 +30,29 @@ export class LoginComponent {
   user = { email: '', password: '' };
   errorMessage: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private firestore : Firestore) {}
 
   login() {
+
+    let col = collection(this.firestore, 'logsExitosos');
     this.authService.logIn(this.user.email, this.user.password)
       .then((res) => {
+        addDoc(col, { "date": new Date(), "usuario": this.user.email});
+        this.authService.guardarUsuario(this.user.email);
         console.log('Inicio de sesión exitoso:', res);
         this.router.navigate(['/home']);
       })
       .catch((e) => {
         if (e.code === AuthErrorCodes.INVALID_EMAIL || e.code === AuthErrorCodes.USER_DELETED) {
-          this.errorMessage = 'The email address is invalid. Please check and try again.'
+          this.errorMessage = 'La dirección de correo electrónico no es válida. Por favor, compruébela y vuelva a intentarlo.'
         } else {
-          this.errorMessage = 'Incorrect username or password. Please try again.';
+          this.errorMessage = 'Nombre de usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.';
         }
       });
   }
 
   enterAsGuest(){
-    this.user.email = 'guest@gmail.com';
+    this.user.email = 'invitado@gmail.com';
     this.user.password = '123456'
   }
 

@@ -1,14 +1,14 @@
 <header>
   <nav class="navbar">
     <div class="container">
-      <a class="navbar-brand" routerLink="/home">GAMING ROOM</a>
+      <a class="navbar-brand" routerLink="/home">SALA DE JUEGOS</a>
       <ul class="nav">
-        <li class="nav-item"><a routerLink="/home" class="nav-link">Home</a></li>
-        <li *ngIf="!user" class="nav-item"><a routerLink="/log-in" class="nav-link">Log in</a></li>
-        <li *ngIf="!user" class="nav-item"><a routerLink="/register" class="nav-link">Register</a></li>
-        <li *ngIf="!user" class="nav-item"><a routerLink="/about-me" class="nav-link">About me</a></li>
-        <li *ngIf="user" class="nav-item"><a routerLink="/about-me" class="nav-link">About me</a></li>
-        <li *ngIf="user" class="nav-item"><a (click)="logout()" class="nav-link">Log out</a></li>
+        <li class="nav-item"><a routerLink="/home" class="nav-link">Inicio</a></li>
+        <li *ngIf="!user" class="nav-item"><a routerLink="/log-in" class="nav-link">Iniciar sesión</a></li>
+        <li *ngIf="!user" class="nav-item"><a routerLink="/register" class="nav-link">Registrarse</a></li>
+        <li *ngIf="!user" class="nav-item"><a routerLink="/about-me" class="nav-link">Sobre mi</a></li>
+        <li *ngIf="user" class="nav-item"><a routerLink="/about-me" class="nav-link">Sobre mi</a></li>
+        <li *ngIf="user" class="nav-item"><a (click)="logout()" class="nav-link">Cerrar sesión</a></li>
       </ul>
     </div>
   </nav>

@@ -39,9 +39,9 @@ export class RegisterComponent {
     }).catch((e) => {
       console.log(e);
       if (e.code === AuthErrorCodes.EMAIL_EXISTS) {
-        this.errorMessage = 'This email is already registered. Please use a different email.';
+        this.errorMessage = 'Este correo electrónico ya está registrado. Por favor, utilice uno diferente.';
       } else {
-        this.errorMessage = 'An error occurred during registration. Please try again.';
+        this.errorMessage = 'Se produjo un error durante el registro. Por favor, inténtelo de nuevo';
       }
       this.errorEmail = 1;
     });

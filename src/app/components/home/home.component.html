@@ -2,7 +2,7 @@
 <div *ngIf="userEmail; else loggedOut">
 <div class="card retro-card">
   <div class="card-body">
-    <p class="card-text retro-text">Welcome, {{ getUserNameFromEmail()}}</p>
+    <p class="card-text retro-text">Bienvenido, {{ getUserNameFromEmail()}}</p>
   </div>
 </div>
 <!-- 
@@ -25,10 +25,10 @@
 <ng-template #loggedOut>
   <div class="overlay">
     <div class="overlay-content">
-      <h1>Welcome to Gaming Room</h1>
-      <p>Please log in or register to continue</p>
-      <button (click)="goTo('/log-in')" class="btn btn-primary me-2">Log In</button>
-      <button (click)="goTo('/register')" class="btn btn-primary ms-2">Register</button>
+      <h1>¡Bienvenido a la Sala de Juegos!</h1>
+      <p>Inicie sesión o regístrese para continuar</p>
+      <button (click)="goTo('/log-in')" class="btn btn-primary me-2">Iniciar sesión</button>
+      <button (click)="goTo('/register')" class="btn btn-primary ms-2">Registrarse</button>
     </div>
   </div>
 </ng-template>
