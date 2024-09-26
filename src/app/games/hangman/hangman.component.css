@@ -1,0 +1,31 @@
+.hangman-container {
+  text-align: center;
+ 
+}
+
+.container mt-5{
+  margin: 100px auto; 
+}
+
+.hangman-container img {
+  width: 100%;
+  max-width: 250px; 
+  max-height: 220px;
+ 
+}
+
+.keyboard {
+  margin-top: 20px;
+}
+
+.keyboard button {
+  margin: 5px;
+  padding: 10px;
+  font-size: 18px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.keyboard button:hover {
+  background-color: #e100ff;
+  color: white;
+}

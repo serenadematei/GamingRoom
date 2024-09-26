@@ -15,14 +15,24 @@ import { User } from 'firebase/auth';
 export class HeaderComponent implements OnInit {
 
   user: User | null = null;
+  isGuestUser:boolean = false;
+
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.authService.currentUser.subscribe((user) => {
       this.user = user;
+      this.isGuest();
     });
+   
   }
+
+ 
+  isGuest(): void {
+    this.isGuestUser = this.user?.email === 'invitado@gmail.com' ? true : false;
+  }
+  
 
   logout(): void {
     this.authService.signOut().then(() => {

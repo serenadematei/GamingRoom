@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { NgIf } from '@angular/common';
 import { AuthErrorCodes } from 'firebase/auth';
+import { User } from '../../models/user';
 import { addDoc, collection, collectionData, Firestore } from '@angular/fire/firestore';
 
 @Component({
@@ -29,6 +30,7 @@ export class LoginComponent {
 
   user = { email: '', password: '' };
   errorMessage: string = '';
+  showRegisterLink: boolean = false;
 
   constructor(private authService: AuthService, private router: Router, private firestore : Firestore) {}
 

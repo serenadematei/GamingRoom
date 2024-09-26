@@ -1,0 +1,25 @@
+.higher-lower-container {
+    text-align: center;
+  }
+  
+  .higher-lower-container img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+  }
+  
+  .buttons {
+    margin-top: 20px;
+  }
+  
+  .buttons button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 18px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .buttons button:hover {
+    background-color: #e100ff;
+    color: white;
+  }

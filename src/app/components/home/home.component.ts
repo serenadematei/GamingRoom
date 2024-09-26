@@ -26,25 +26,34 @@ import { User } from 'firebase/auth';
 })
 
 export class HomeComponent implements OnInit {
-
   userEmail: string | null = null;
-  userName : string = ''
   games = [
-    { title: 'Game 1', text: 'Description of Game 1', img: 'assets/med.jpg', path: '/game1' },
-    { title: 'Game 2', text: 'Description of Game 2', img: 'assets/med.jpg', path: '/game2' },
+    { title: 'Ahorcado', text: 'Pon a prueba tu vocabulario y tus habilidades para resolver acertijos. En este emocionante juego, tu objetivo es adivinar la palabra oculta letra por letra antes de que el ahorcado quede completamente dibujado.', img: 'assets/hangman.png', path: '/hangman' },
+    { title: 'Mayor Menor', text: 'Pon a prueba tu intuición mientras intentas adivinar si la siguiente carta será mayor o menor que la carta actual. ¡Elige correctamente tantas veces como puedas hasta que se acabe el mazo!', img: 'assets/juegoCarta.jpeg', path: '/higherLower' },
   ];
 
+  userName : string = ''
 
   constructor(private authService: AuthService, private router: Router) {}
-
   ngOnInit(): void {
     this.authService.currentUser.subscribe((user: User | null) => {
       this.userEmail = user?.email || null;
     });
   }
 
-  goTo(path: string):void{
-    this.router.navigate([path])
+
+  logout(): void {
+    this.authService.signOut().then(() => {
+      this.router.navigate(['/log-in']);
+    });
+  }
+
+  goToLogin(): void {
+    this.router.navigate(['/log-in']);
+  }
+
+  goToRegister(): void {
+    this.router.navigate(['/register']);
   }
 
   playGame(path: string): void {

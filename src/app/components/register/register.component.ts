@@ -5,6 +5,9 @@ import { addDoc, collection, collectionData, Firestore } from '@angular/fire/fir
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { AuthErrorCodes } from 'firebase/auth';
+
+
+
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -15,15 +18,15 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-
   user: User = new User("","");
   errorEmail: number = -1; 
   errorMessage: string = '';
 
 
-  constructor(private authService : AuthService, private router: Router,private firestore : Firestore) {}
+  constructor(private authService : AuthService, private router: Router,private firestore : Firestore) {
+  }
 
-  register() {
+  registrarse() {
 
     let col = collection(this.firestore, 'registros');
 
@@ -46,6 +49,12 @@ export class RegisterComponent {
       this.errorEmail = 1;
     });
   }
+
+  goToLogin() {
+    this.router.navigate(["/login"]);
+  }
+
+ 
 
 
 }

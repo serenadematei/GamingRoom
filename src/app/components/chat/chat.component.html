@@ -1,0 +1,29 @@
+
+<div class="container mt-5"></div>
+  <div class="row justify-content-center">
+    <div class="col-md-7">
+      <div class="card chat-card" style="background-color: rgba(0, 0, 0, 0.875); border-color: white;">
+        <div class="card-header" style="background-color:rgb(172, 8, 194); color: white; font-size: 15px; font-weight: bold;">
+          Chat Room
+        </div>
+        <div class="card-body chat-body" #messageContainer @fadeIn>
+          <div class="messages">
+            <div *ngFor="let message of messages" class="message" 
+                 [ngClass]="{'my-message': message.user === currentUserEmail, 'other-message': message.user !== currentUserEmail}">
+              <div *ngIf="message.user !== currentUserEmail">
+                <span class="user">{{ message.user }}</span>
+                <span class="timestamp">{{ message.timestamp.toDate() | date:'short' }}</span>
+              </div>
+              <span class="text">{{ message.message }}</span>
+            </div>
+          </div>
+          <div class="input-group mt-3">
+            <input type="text" class="form-control" [(ngModel)]="newMessage" placeholder="Escribe un mensaje..." style="background-color: rgba(255, 255, 255, 0.259); color: white;">
+            <button class="btn btn-primary ms-2" (click)="sendMessage()" style="background-color:#0bdad7c2; border-color: #0bdad7c2;">Enviar</button>
+          </div>
+          <div *ngIf="errorMessage" class="alert alert-danger mt-2">{{ errorMessage }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
