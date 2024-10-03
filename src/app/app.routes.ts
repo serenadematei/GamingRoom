@@ -5,6 +5,8 @@ import { LoginComponent } from './components/log-in/log-in.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ChatComponent } from './components/chat/chat.component';
 
+
+
 export const routes: Routes = [   
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path:'home', component:HomeComponent},
@@ -19,5 +21,12 @@ export const routes: Routes = [
     { 
         path: 'higherLower', 
         loadComponent: () => import('./games/higher-lower/higher-lower.component').then(m => m.HigherLowerComponent) 
-    }
+    },
+    { 
+        path: 'trivia', 
+        loadComponent: () => import('./games/trivia/trivia.component').then(m => m.TriviaComponent) 
+    },
+    {path:'word-search',
+        loadComponent: () => import('./games/word-search/word-search.component').then(m => m.WordSearchComponent)
+    }  
 ];

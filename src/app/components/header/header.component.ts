@@ -13,7 +13,6 @@ import { User } from 'firebase/auth';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit {
-
   user: User | null = null;
   isGuestUser:boolean = false;
 

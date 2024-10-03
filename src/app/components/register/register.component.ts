@@ -23,10 +23,9 @@ export class RegisterComponent {
   errorMessage: string = '';
 
 
-  constructor(private authService : AuthService, private router: Router,private firestore : Firestore) {
-  }
+  constructor(private authService : AuthService, private router: Router,private firestore : Firestore) {}
 
-  registrarse() {
+  register() {
 
     let col = collection(this.firestore, 'registros');
 
@@ -49,12 +48,5 @@ export class RegisterComponent {
       this.errorEmail = 1;
     });
   }
-
-  goToLogin() {
-    this.router.navigate(["/login"]);
-  }
-
- 
-
 
 }

@@ -1,0 +1,48 @@
+.container {
+  margin-top: 20px;
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0.875);
+  border-color: white;
+}
+
+.card-header {
+  background-color: rgb(172, 8, 194);
+  color: white;
+  font-size: 1.3rem;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.btn-outline-light {
+  color: white;
+  border-color: white;
+}
+
+.btn-outline-light:hover {
+  background-color: white;
+  color: black;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.custom-button {
+  width: 150px; /* Puedes ajustar este valor según tus necesidades */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -27,7 +27,6 @@ import { addDoc, collection, collectionData, Firestore } from '@angular/fire/fir
   ]
 })
 export class LoginComponent {
-
   user = { email: '', password: '' };
   errorMessage: string = '';
   showRegisterLink: boolean = false;

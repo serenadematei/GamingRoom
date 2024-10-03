@@ -1,58 +1,58 @@
 .chat-card {
-    background-color: rgba(0, 0, 0, 0.875);
-    border-color: white;
-  }
-  
-  .chat-body {
-    max-height: 400px;
-    overflow-y: auto;
-  }
-  
-  
-  .message .text {
-    margin-left: 5px;
-  }
-  
+  background-color: rgba(0, 0, 0, 0.875);
+  border-color: white;
+}
 
-  ::placeholder {
-    color: rgba(221, 211, 211, 0.803);
-    
-  }
-  
+.chat-body {
+  max-height: 400px;
+  overflow-y: auto;
+}
 
-  .message {
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    display: inline-block; 
-    max-width: 60%; 
-    word-wrap: break-word; 
-  }
+
+.message .text {
+  margin-left: 5px;
+}
+
+
+::placeholder {
+  color: rgba(221, 211, 211, 0.803);
   
-  .my-message {
-    background-color: rgb(172, 8, 194);
-    color: white;
-    margin-left: auto;
-    text-align: right;
-    float: right;
-    clear: both;
-  }
-  
-  .other-message {
-    background-color: #f1f0f0;
-    color: black;
-    text-align: left;
-    margin-right: auto;
-    float: left;
-    clear: both;
-  }
-  
-  .user {
-    font-weight: bold;
-  }
-  
-  .timestamp {
-    font-size: 0.8em;
-    color: #6c757d;
-    margin-left: 10px;
-  }
+}
+
+
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  display: inline-block; 
+  max-width: 60%; 
+  word-wrap: break-word; 
+}
+
+.my-message {
+  background-color: rgb(172, 8, 194);
+  color: white;
+  margin-left: auto;
+  text-align: right;
+  float: right;
+  clear: both;
+}
+
+.other-message {
+  background-color: #f1f0f0;
+  color: black;
+  text-align: left;
+  margin-right: auto;
+  float: left;
+  clear: both;
+}
+
+.user {
+  font-weight: bold;
+}
+
+.timestamp {
+  font-size: 0.8em;
+  color: #6c757d;
+  margin-left: 10px;
+}

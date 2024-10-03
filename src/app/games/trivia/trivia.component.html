@@ -1,0 +1,61 @@
+<div class="container mt-5" *ngIf="question && errors < 3">
+    <div class="row justify-content-center">
+      <div class="col-md-7">
+        <div class="card" style="background-color: rgba(0, 0, 0, 0.875); border-color: white;">
+          <div class="card-header" style="background-color: rgb(172, 8, 194); color: white; font-size: 1.3rem;">
+            Aventura Global 
+          </div>
+          <div class="card-body text-center">
+            
+            <div *ngIf="status == 'Starting'">
+                <img src="assets/flags2.png" alt="Flags" class="img-fluid mb-3">
+                <br>
+                <button (click)="startGame()" class="btn btn-primary mt-3" style="background-color: rgb(172, 8, 194); border-color: #e100ff;">Comenzar</button>
+              </div>
+            <div>
+            <div *ngIf="status != 'Starting'">
+                <img [src]="question.flags.png" alt="Country Flag" class="img-fluid mb-3">
+                <div *ngIf="optionsAvailable" >
+              <div *ngFor="let option of options" >
+                <button (click)="checkAnswer(option, $event)"  class="btn btn-outline-light m-1 custom-button">{{ option.name.common }}</button>
+              </div>
+
+              <p class="mt-3" style="color: white; font-size: 1.5rem;">Puntaje: {{ score }}</p>
+              <p class="mt-3" style="color: white; font-size: 1.5rem;">Intentos fallidos: {{ errors }} / 3</p>
+              <button (click)="restartGame()" class="btn btn-primary mt-3" style="background-color: rgb(172, 8, 194); border-color: #e100ff;">Reiniciar juego</button>
+
+            </div>
+            </div>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7 text-start mt-2">
+        <button (click)="goToHome()" class="btn btn-primary" type="button" style="background-color:rgb(11, 202, 186); border-color: #0bdad7c2;">Ir a inicio</button>
+      </div>
+     
+    </div>
+  </div>
+  
+  <div class="container mt-5" *ngIf="errors >= 3">
+    <div class="row justify-content-center">
+      <div class="col-md-7">
+        <div class="card" style="background-color: rgba(0, 0, 0, 0.875); border-color: white;">
+          <div class="card-header" style="background-color: rgb(172, 8, 194); color: white; font-size: 1.3rem;">
+            Game Over
+          </div>
+          <div class="card-body text-center">
+            <img src="assets/youlose.jpg" alt="You Lose" class="img-fluid mb-3">
+            <p class="mt-3" style="color: white; font-size: 1.5rem;">Errores = 3/3</p>
+            <p class="mt-3" style="color: white; font-size: 1.5rem;">Tu puntaje final es: {{ score }}</p>
+            <button (click)="restartGame()" class="btn btn-primary mt-3" style="background-color: rgb(172, 8, 194); border-color: #e100ff;">Reiniciar juego</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7 text-start mt-2">
+        <button (click)="goToHome()" class="btn btn-primary" type="button" style="background-color:rgb(11, 202, 186); border-color: #0bdad7c2;">Ir a inicio</button>
+      </div>
+    </div>
+  </div>
+

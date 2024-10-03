@@ -40,7 +40,12 @@ export class HangmanComponent implements OnInit {
     'assets/hangman/hangman_05.png',
     'assets/hangman/hangman_06.png',
     'assets/hangman/hangman_07.png'
-  ];
+  ]; 
+
+  timeElapsed: number = 0;
+  timerInterval: any;
+  totalTimeTaken: number = 0;
+  score: number = 0;
 
   constructor(private router:Router) { }
 
@@ -50,29 +55,62 @@ export class HangmanComponent implements OnInit {
 
   startGame(): void {
     this.selectedWord = this.words[Math.floor(Math.random() * this.words.length)];
-    this.displayWord = Array(this.selectedWord.length).fill('_');
+    this.displayWord = Array(this.selectedWord.length).fill('_'); 
     this.attempts = 6;
     this.guessedLetters = [];
     this.wrongLetters = [];
     this.status = 'Playing';
+
+    this.timeElapsed = 0;
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+    }
+    this.startTimer();
   }
+
+  startTimer() {
+    this.timerInterval = setInterval(() => {
+      this.timeElapsed++;
+    }, 1000);
+  }
+
+  stopTimer() {
+    clearInterval(this.timerInterval);
+    this.totalTimeTaken = this.timeElapsed;
+  }
+
+    calculateScore() {
+      if (this.totalTimeTaken <= 20) {
+        this.score = 100;
+      } else if (this.totalTimeTaken <= 40) {
+        this.score = 75;
+      } else if (this.totalTimeTaken <= 60) {
+        this.score = 50;
+      } else if (this.totalTimeTaken <= 80) {
+        this.score = 20;
+      } else {
+        this.score = 10;
+      }
+    }
 
   guessLetter(letter: string): void {
     if (this.status !== 'Playing' || this.guessedLetters.includes(letter)) {
-      return;
+      return; 
     }
-    this.guessedLetters.push(letter);
-    if (this.selectedWord.includes(letter.toLowerCase())) {
+    this.guessedLetters.push(letter); 
+    if (this.selectedWord.includes(letter.toLowerCase())) { 
       for (let i = 0; i < this.selectedWord.length; i++) {
-        if (this.selectedWord[i] === letter.toLowerCase()) {
+        if (this.selectedWord[i] === letter.toLowerCase()) { 
           this.displayWord[i] = letter.toLowerCase();
         }
       }
-      if (!this.displayWord.includes('_')) {
+      if (!this.displayWord.includes('_')) { 
+        this.stopTimer();
         this.status = '¡Ganaste!';
+        this.calculateScore();
       }
     } else {
-      this.wrongLetters.push(letter)
+      this.wrongLetters.push(letter)  
       this.attempts--;
       if (this.attempts === 0) {
         this.status = 'Perdiste. ¡Inténtalo otra vez!';
@@ -84,7 +122,7 @@ export class HangmanComponent implements OnInit {
   }
 
   get hangmanImage(): string {
-    return this.hangmanImages[6 - this.attempts];
+    return this.hangmanImages[6 - this.attempts]; 
   }
   
 }

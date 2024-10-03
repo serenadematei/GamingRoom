@@ -1,0 +1,173 @@
+<!-- <div class="container mt-5">
+  <div *ngIf="!selectedCategory" class="row justify-content-center">
+    <div class="col-md-7">
+      <div class="card" style="background-color: rgba(0, 0, 0, 0.875); border-color: white;">
+        <div class="card-header" style="background-color: rgb(172, 8, 194); color: white; font-size: 1.3rem;">
+          Selecciona una categoría
+        </div>
+        <div class="text-center">
+          <img src="assets/prueba.png" alt="Choose Category" class="img-fluid mb-0 rounded-border" style="max-width: 300px;">
+       </div>
+        <div class="card-body text-center">
+          <div *ngFor="let category of categories">
+            <button (click)="selectCategory(category)" class="btn btn-primary m-1">{{ category.name }}</button>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+
+  <div *ngIf="selectedCategory">
+    <div class="row justify-content-center">
+      <div class="col-md-7">
+        <div class="card" style="background-color: rgba(0, 0, 0, 0.875); border-color: white;">
+          <div class="card-header" style="background-color: rgb(172, 8, 194); color: white; font-size: 1.3rem;">
+            Palabras Enredadas
+          </div>
+          <div class="card-body text-center">
+            <p class="mt-3" style="color: white;">Tiempo: {{ timeElapsed }} segundos</p>
+            <div class="grid">
+              <div *ngFor="let row of grid; let rowIndex = index" class="grid-row">
+                <button *ngFor="let cell of row; let colIndex = index"
+                        (click)="selectCell(rowIndex, colIndex)"
+                        class="grid-cell btn btn-outline-light m-1"
+                        [class.selected]="isSelected(rowIndex, colIndex)">
+                  {{ cell }}
+                </button>
+              </div>
+            </div>
+            <div>
+              <p class="mt-3" style="color: white;">Palabra seleccionada: {{ selectedWord }}</p>
+              <div class="d-flex justify-content-center align-items-center">
+              <button (click)="resetSelection()" class="btn btn-primary me-2" style="background-color: rgb(172, 8, 194); border-color: #e100ff;">Reiniciar palabra</button>
+              <button (click)="submitWord()" class="btn btn-primary " style="background-color: rgb(172, 8, 194); border-color: #e100ff;">Enviar palabra</button>
+              </div>
+            </div>
+             <p class="mt-3" style="color: white;">Puntaje: {{ score }}</p>
+            <p class="mt-3" style="color: white;">{{ feedbackMessage }}</p>
+            <p style="color: white;">Tu puntaje final es: {{ score }}</p>
+            <p style="color: white;">Tu tiempo: {{ timeElapsed }} segundos</p>
+
+            <div class="d-flex justify-content-center align-items-center">
+             <button (click)="changeCategory()" class="btn btn-primary" type="button" style="background-color:rgb(11, 202, 186); border-color: #0bdad7c2;">Cambiar categoría</button>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-7 text-start mt-2">
+          <button (click)="goToHome()" class="btn btn-primary" type="button" style="background-color:rgb(11, 202, 186); border-color: #0bdad7c2;">Ir a inicio</button>
+         
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>
+
+<ng-template #gameOverTemplate>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-7">
+        <div class="card" style="background-color: rgba(0, 0, 0, 0.875); border-color: white;">
+          <div class="card-header" style="background-color: rgb(172, 8, 194); color: white; font-size: 1.3rem;">
+            ¡Juego terminado!
+          </div>
+          <div class="card-body text-center">
+            <p style="color: white;">Tu puntaje final es: {{ score }}</p>
+            <button (click)="startNewGame()" class="btn btn-primary mt-3" style="background-color: rgb(172, 8, 194); border-color: #e100ff;">Jugar de nuevo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+-->
+<div class="container mt-5">
+  <div *ngIf="!selectedCategory" class="row justify-content-center">
+    <div class="col-md-7">
+      <div class="card" style="background-color: rgba(0, 0, 0, 0.875); border-color: white;">
+        <div class="card-header" style="background-color: rgb(172, 8, 194); color: white; font-size: 1.3rem;">
+          Selecciona una categoría
+        </div>
+        <div class="text-center">
+          <img src="assets/prueba.png" alt="Choose Category" class="img-fluid mb-0 rounded-border" style="max-width: 300px;">
+       </div>
+        <div class="card-body text-center">
+          <div *ngFor="let category of categories">
+            <button (click)="selectCategory(category)" class="btn btn-outline-light m-1 custom-button">{{ category.name }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedCategory">
+    <div class="row justify-content-center">
+      <div class="col-md-7">
+        <div class="card" style="background-color: rgba(0, 0, 0, 0.875); border-color: white;">
+          <div class="card-header" style="background-color: rgb(172, 8, 194); color: white; font-size: 1.3rem;">
+            Letras Enredadas
+          </div>
+          <div class="card-body text-center">
+            <p class="mt-3" style="color: white;">Tiempo: {{ timeElapsed }} segundos</p>
+            <div class="grid">
+              <div *ngFor="let row of grid; let rowIndex = index" class="grid-row">
+                <button *ngFor="let cell of row; let colIndex = index"
+                        (click)="selectCell(rowIndex, colIndex)"
+                        class="grid-cell btn btn-outline-light m-1"
+                        [class.selected]="isSelected(rowIndex, colIndex)">
+                  {{ cell }}
+                </button>
+              </div>
+            </div>
+            <div *ngIf = !gameOver>
+              <p class="mt-3" style="color: white;">Palabra seleccionada {{ selectedWord }}</p>
+              <p class="mt-3" style="color: white;">{{ feedbackMessage }}</p> 
+              <div class="d-flex justify-content-center align-items-center">
+              <button (click)="resetSelection()" class="btn btn-primary me-2" style="background-color: rgb(172, 8, 194); border-color: #e100ff;">Reiniciar palabra</button>
+              <button (click)="submitWord()" class="btn btn-primary " style="background-color: rgb(172, 8, 194); border-color: #e100ff;">Enviar palabra</button>
+              </div>
+              <div class="d-flex justify-content-center align-items-center">
+                <button (click)="changeCategory()" class="btn btn-primary" type="button" style="background-color:rgb(11, 202, 186); border-color: #0bdad7c2;">Cambiar categoría</button>
+               </div>
+            </div>
+            <div *ngIf = gameOver>
+            <p class="mt-3" style="color: white;">{{ feedbackMessage }}</p>
+            <p style="color: white;">Tu puntaje final es: {{ score }}</p>
+            <p style="color: white;">Tardaste: {{ timeElapsed }} segundos</p>
+            <button (click)="startNewGame()"  class="btn btn-primary mt-3" style="background-color: rgb(172, 8, 194); border-color: #e100ff;">Jugar de nuevo</button>
+            </div>
+
+            
+
+          </div>
+        </div>
+        <div class="col-md-7 text-start mt-2">
+          <button (click)="goToHome()" class="btn btn-primary" type="button" style="background-color:rgb(11, 202, 186); border-color: #0bdad7c2;">Ir a inicio</button>
+        
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>
+
+<ng-template #gameOverTemplate>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-7">
+        <div class="card" style="background-color: rgba(0, 0, 0, 0.875); border-color: white;">
+          <div class="card-header" style="background-color: rgb(172, 8, 194); color: white; font-size: 1.3rem;">
+            Juego terminado
+          </div>
+          <div class="card-body text-center">
+            <p style="color: white;">Tu puntaje final es: {{ score }}</p>
+            <button (click)="startNewGame()" class="btn btn-primary mt-3" style="background-color: rgb(172, 8, 194); border-color: #e100ff;">Jugar de nuevo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+  

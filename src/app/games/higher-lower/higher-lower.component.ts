@@ -51,16 +51,16 @@ export class HigherLowerComponent implements OnInit {
     this.status="Playing"
   }
 
-  initializeDeck(): void {
+  initializeDeck(): void {  //crea el mazo de cartas. recorro los 4 palos(suits)
     this.deck = [];
     for (const suit of this.suits) {
       for (let value = 1; value <= 12; value++) {
         this.deck.push({ suit, value });
-      }
+      } //la estructura final tiene que ser:   { suit: 'oro', value: 3 }, { suit: 'basto', value: 10 }, y asi
     }
   }
 
-  shuffleDeck(): void {
+  shuffleDeck(): void { //mezcla las cartas
     for (let i = this.deck.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [this.deck[i], this.deck[j]] = [this.deck[j], this.deck[i]];
@@ -68,16 +68,16 @@ export class HigherLowerComponent implements OnInit {
   }
 
   drawInitialCards(): void {
-    this.currentCard = this.deck.pop() || null;
+    this.currentCard = this.deck.pop() || null; //devuelve la última carta del mazo y la asigna a currentCard
     this.nextCard = this.deck.pop() || null;
   }
 
   guessHigher(): void {
     if (!this.gameOver && this.nextCard) {
-      if (this.nextCard.value >= (this.currentCard?.value || 0)) {
+      if (this.nextCard.value > (this.currentCard?.value || 0)) { 
         this.score++;
       } else {
-        this.score--;
+        this.score;
       }
       this.advanceGame();
     }
@@ -85,16 +85,16 @@ export class HigherLowerComponent implements OnInit {
 
   guessLower(): void {
     if (!this.gameOver && this.nextCard) {
-      if (this.nextCard.value <= (this.currentCard?.value || 0)) {
+      if (this.nextCard.value < (this.currentCard?.value || 0)) {
         this.score++;
       } else {
-        this.score--;
+        this.score;
       }
       this.advanceGame();
     }
   }
 
-  advanceGame(): void {
+  advanceGame(): void { //voy avanzando el juego con next card, y si no quedan mas cartas, lo termino
     this.currentCard = this.nextCard;
     this.nextCard = this.deck.pop() || null;
     this.isCardFlipped = false; //

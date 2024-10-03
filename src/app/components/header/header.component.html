@@ -7,7 +7,6 @@
         <li *ngIf="!user" class="nav-item"><a routerLink="/log-in" class="nav-link">Iniciar sesión</a></li>
         <li *ngIf="!user" class="nav-item"><a routerLink="/register" class="nav-link">Registrarse</a></li>
         <li *ngIf="!user" class="nav-item"><a routerLink="/about-me" class="nav-link">Sobre mi</a></li>
-       <!--- <li *ngIf="user && !isGuestUser" class="nav-item"><a routerLink="/chat" class="nav-link">Chat</a></li>-->
         <li *ngIf="user" class="nav-item"><a routerLink="/chat" class="nav-link">Chat</a></li>
         <li *ngIf="user" class="nav-item"><a routerLink="/about-me" class="nav-link">Sobre mi</a></li>
         <li *ngIf="user" class="nav-item"><a (click)="logout()" class="nav-link">Cerrar sesión</a></li>
@@ -15,5 +14,7 @@
     </div>
   </nav>
 </header>
+
+
 
 

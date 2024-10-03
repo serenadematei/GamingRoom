@@ -1,117 +1,117 @@
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  .games-list .card {
-    width: 100%; 
-    max-width: 300px; 
-    margin: 10px auto; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
+.games-list .card {
+  width: 100%; 
+  max-width: 300px; 
+  margin: 10px auto; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-  .games-list .card:hover {
-    transform: scale(1.05); 
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
-  }
-  
-  .games-list .card-img-top {
-    width: 100%;
-    height: 200px; 
-    object-fit: cover;
-  }
-  
-  .games-list .card-body {
-    text-align: center;
-    padding: 10px; 
-  }
-  
-  .games-list .card-title {
-    font-size: 16px; 
-    margin-bottom: 5px;
-  }
-  
-  .games-list .card-text {
-    font-size: 14px; 
-    margin-bottom: 10px;
-  }
+.games-list .card:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+}
 
-  
-  .games-section {
-    padding: 50px 0;
-  }
-  
-  .game-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin: 20px;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .game-card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 15px;
-  }
+.games-list .card-img-top {
+  width: 100%;
+  height: 200px; 
+  object-fit: cover;
+}
+
+.games-list .card-body {
+  text-align: center;
+  padding: 10px; 
+}
+
+.games-list .card-title {
+  font-size: 16px; 
+  margin-bottom: 5px;
+}
+
+.games-list .card-text {
+  font-size: 14px; 
+  margin-bottom: 10px;
+}
 
 
+.games-section {
+  padding: 50px 0;
+}
 
-  .user-info{
-    font-family: Arial, sans-serif;
-    font-size: 16px; 
-    font-weight: bold; 
-    color: #ee02cf; 
-    text-shadow: 1px 1px 2px #000; 
-  }
-  .retro-card {
-    background-color:rgba(0, 0, 0, 0.7);
-    border-radius: 8px;
-    padding: 15px;
-    width: fit-content;
-    margin: 10px auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .retro-text {
-    color: #e6d8d8;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  }
-  
-  .retro-card:hover {
-    background-color:rgba(0, 0, 0, 0.744);
-    transition: background-color 0.3s ease;
-  }
-  
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-  }
-  
-  .overlay-content {
-    text-align: center;
-    color: white;
-  }
-  
-  .overlay-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-  
-  .overlay-content p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-  }
+.game-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.game-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+
+
+.user-info{
+  font-family: Arial, sans-serif;
+  font-size: 16px; 
+  font-weight: bold; 
+  color: #ee02cf; 
+  text-shadow: 1px 1px 2px #000; 
+}
+.retro-card {
+  background-color:rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  padding: 15px;
+  width: fit-content;
+  margin: 10px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.retro-text {
+  color: #e6d8d8;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.retro-card:hover {
+  background-color:rgba(0, 0, 0, 0.744);
+  transition: background-color 0.3s ease;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.overlay-content {
+  text-align: center;
+  color: white;
+}
+
+.overlay-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.overlay-content p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}

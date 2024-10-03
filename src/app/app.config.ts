@@ -5,10 +5,12 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import {provideAuth,getAuth} from '@angular/fire/auth';
+import { provideHttpClient } from '@angular/common/http';
+
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),provideAnimations(), 
+  providers: [provideRouter(routes),provideHttpClient(),provideAnimations(), 
    ([
     provideFirebaseApp(()=>initializeApp(firebaseConfig)),
     provideFirestore(()=>getFirestore()),

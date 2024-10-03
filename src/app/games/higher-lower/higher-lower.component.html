@@ -1,37 +1,37 @@
 <div [@fadeInOut] class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-7">
-        <div class="card" style="background-color: rgba(0, 0, 0, 0.875); border-color: white;">
-          <div class="card-header" style="background-color: rgb(172, 8, 194); color: white; font-size: 1.3rem;">
-            Mayor o Menor
-          </div>
-          <div class="card-body">
-            <div class="text-center">
-            <img *ngIf="isCardFlipped" src="assets/cartas/tapa.png" alt="Carta dada vuelta" class="img-fluid">
-            <img *ngIf="!isCardFlipped && currentCard" [src]="'assets/cartas/' + currentCard.suit + '.' + currentCard.value + '.png'" alt="Current Card" class="img-fluid">
-              <div *ngIf="!gameOver">
-                <p class="mt-3" style="color: white; font-size: 1.5rem;">Puntaje: {{ score }}</p>
-                <p class="mt-3" style="color: white; font-size: 1.5rem;">La próxima carta es...</p>
-                <button (click)="guessHigher()" *ngIf="higherLowerButtons" class="btn btn-outline-light m-1">Mayor</button>
-                <button (click)="guessLower()" *ngIf="higherLowerButtons" class="btn btn-outline-light m-1">Menor</button>
-              </div>
-              <div *ngIf ="!gameOver && status == 'Starting'">
-                <button (click)="startGame()" class="btn btn-primary" type="button" style="background-color: rgb(172, 8, 194); border-color: #e100ff;">Jugar</button>
-              </div>
-              <div *ngIf ="!gameOver && status != 'Starting'">
-                <button (click)="restartGame()" class="btn btn-primary mt-3" style="background-color: rgb(172, 8, 194); border-color: #e100ff;">Reanudar</button>
-              </div>
-              <div *ngIf="gameOver && status != 'Starting'" >
-                <p class="mt-3" style="color: white; font-size: 1.5rem;">¡Mazo terminado!</p>
-                <p class="mt-3" style="color: white; font-size: 1.5rem;">Tu puntaje final es: {{ score }}</p>
-                <button (click)="restartGame()" class="btn btn-primary mt-3" style="background-color: rgb(172, 8, 194); border-color: #e100ff;">Jugar de nuevo</button>
-              </div>
+  <div class="row justify-content-center">
+    <div class="col-md-7">
+      <div class="card" style="background-color: rgba(0, 0, 0, 0.875); border-color: white;">
+        <div class="card-header" style="background-color: rgb(172, 8, 194); color: white; font-size: 1.3rem;">
+          Mayor o Menor
+        </div>
+        <div class="card-body">
+          <div class="text-center">
+          <img *ngIf="isCardFlipped" src="assets/cartas/tapa.png" alt="Carta dada vuelta" class="img-fluid">
+          <img *ngIf="!isCardFlipped && currentCard" [src]="'assets/cartas/' + currentCard.suit + '.' + currentCard.value + '.png'" alt="Current Card" class="img-fluid">
+            <div *ngIf="!gameOver">
+              <p class="mt-3" style="color: white; font-size: 1.5rem;">Puntaje: {{ score }}</p>
+              <p class="mt-3" style="color: white; font-size: 1.5rem;">La próxima carta es...</p>
+              <button (click)="guessHigher()" *ngIf="higherLowerButtons" class="btn btn-outline-light m-1">Mayor</button>
+              <button (click)="guessLower()" *ngIf="higherLowerButtons" class="btn btn-outline-light m-1">Menor</button>
+            </div>
+            <div *ngIf ="!gameOver && status == 'Starting'">
+              <button (click)="startGame()" class="btn btn-primary" type="button" style="background-color: rgb(172, 8, 194); border-color: #e100ff;">Jugar</button>
+            </div>
+            <div *ngIf ="!gameOver && status != 'Starting'">
+              <button (click)="restartGame()" class="btn btn-primary mt-3" style="background-color: rgb(172, 8, 194); border-color: #e100ff;">Reanudar</button>
+            </div>
+            <div *ngIf="gameOver && status != 'Starting'" >
+              <p class="mt-3" style="color: white; font-size: 1.5rem;">¡Mazo terminado!</p>
+              <p class="mt-3" style="color: white; font-size: 1.5rem;">Tu puntaje final es: {{ score }}</p>
+              <button (click)="restartGame()" class="btn btn-primary mt-3" style="background-color: rgb(172, 8, 194); border-color: #e100ff;">Jugar de nuevo</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-7 text-start mt-2">
-        <button (click)="goToHome()" class="btn btn-primary" type="button" style="background-color:rgb(11, 202, 186); border-color: #0bdad7c2;">Ir a inicio</button>
-      </div>
+    </div>
+    <div class="col-md-7 text-start mt-2">
+      <button (click)="goToHome()" class="btn btn-primary" type="button" style="background-color:rgb(11, 202, 186); border-color: #0bdad7c2;">Ir a inicio</button>
     </div>
   </div>
+</div>
