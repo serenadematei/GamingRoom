@@ -53,7 +53,7 @@ export class LoginComponent {
   }
 
   enterAsGuest(){
-    this.user.email = 'invitado@gmail.com';
+    this.user.email = 'invitado@invitado.com';
     this.user.password = '123456'
   }
 

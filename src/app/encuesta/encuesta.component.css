@@ -1,0 +1,39 @@
+.encuesta-container {
+    margin: 20px;
+    background-color:rgb(197, 71, 213);
+  }
+
+  .loco{
+    background-color:rgb(197, 71, 213);
+  }
+  
+  
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  input[type="text"], input[type="number"], input[type="radio"] {
+    margin-bottom: 10px;
+  }
+  
+  input[type="checkbox"] {
+    margin-left: 10px;
+  }
+  
+  small {
+    color: red;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+  }

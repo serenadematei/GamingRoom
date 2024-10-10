@@ -4,6 +4,8 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/log-in/log-in.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { ListadoResultadosComponent } from './listado-resultados/listado-resultados.component';
+import { EncuestaComponent } from './encuesta/encuesta.component';
 
 
 
@@ -28,5 +30,7 @@ export const routes: Routes = [
     },
     {path:'word-search',
         loadComponent: () => import('./games/word-search/word-search.component').then(m => m.WordSearchComponent)
-    }  
+    },
+    { path: 'listado-resultados', component: ListadoResultadosComponent},
+    { path: 'encuesta', component: EncuestaComponent },
 ];

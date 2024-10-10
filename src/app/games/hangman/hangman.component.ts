@@ -2,6 +2,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
 import { CommonModule, NgIf, NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ResultadosService } from '../../services/resultados.service';
 
 
 @Component({
@@ -47,7 +48,7 @@ export class HangmanComponent implements OnInit {
   totalTimeTaken: number = 0;
   score: number = 0;
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private resultadosService:ResultadosService) { }
 
   ngOnInit(): void {
     this.startGame();
@@ -91,6 +92,7 @@ export class HangmanComponent implements OnInit {
       } else {
         this.score = 10;
       }
+      this.finalizarJuego();
     }
 
   guessLetter(letter: string): void {
@@ -123,6 +125,25 @@ export class HangmanComponent implements OnInit {
 
   get hangmanImage(): string {
     return this.hangmanImages[6 - this.attempts]; 
+  }
+
+  finalizarJuego() {
+    // Guardar el resultado del juego
+    if(this.score > 0 )
+    {
+      this.resultadosService.guardarResultado('Ahorcado', this.score)
+      .then(() => {
+        console.log('Puntaje guardado con éxito');
+      })
+      .catch(error => {
+        console.log('Error al guardar el resultado: ', error);
+      });
+    }
+    else
+    {
+      console.log("Puntaje 0, no lo guardo");
+    }
+    
   }
   
 }

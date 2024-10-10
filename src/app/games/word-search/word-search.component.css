@@ -27,5 +27,10 @@
 
   .text-center {
     text-align: center;
-    
-}
+  }
+
+  .found {
+    background-color: #28a745; /* Verde para las letras encontradas */
+    color: white; /* Letras blancas */
+    border-color: #28a745; /* Cambiar también el borde */
+  }

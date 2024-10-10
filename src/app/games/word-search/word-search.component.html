@@ -113,9 +113,11 @@
             <div class="grid">
               <div *ngFor="let row of grid; let rowIndex = index" class="grid-row">
                 <button *ngFor="let cell of row; let colIndex = index"
+                        id="cell-{{ rowIndex }}-{{ colIndex }}"
                         (click)="selectCell(rowIndex, colIndex)"
                         class="grid-cell btn btn-outline-light m-1"
-                        [class.selected]="isSelected(rowIndex, colIndex)">
+                        [class.selected]="isSelected(rowIndex, colIndex)"
+                        [disabled]="isFound(rowIndex, colIndex)">
                   {{ cell }}
                 </button>
               </div>

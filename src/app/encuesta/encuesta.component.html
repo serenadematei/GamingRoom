@@ -1,0 +1,101 @@
+<div class="container mt-5">
+    <div class="card bg-light p-4 shadow-sm loco">
+      <h2 class="text-center mb-4">Encuesta</h2>
+  
+      <form [formGroup]="encuestaForm" (ngSubmit)="onSubmit()">
+        
+            <!-- Nombre -->
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input id="nombre" formControlName="nombre" type="text" class="form-control">
+            <div *ngIf="f['nombre'].invalid && f['nombre'].touched" class="text-danger">
+            <small *ngIf="f['nombre'].errors?.['required']">El nombre es obligatorio.</small>
+            <small *ngIf="f['nombre'].errors?.['minlength']">El nombre debe tener al menos 3 caracteres.</small>
+            <small *ngIf="f['nombre'].errors?.['pattern']">El nombre solo puede contener letras y espacios.</small>
+            </div>
+        </div>
+        
+        <!-- Apellido -->
+        <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input id="apellido" formControlName="apellido" type="text" class="form-control">
+            <div *ngIf="f['apellido'].invalid && f['apellido'].touched" class="text-danger">
+            <small *ngIf="f['apellido'].errors?.['required']">El apellido es obligatorio.</small>
+            <small *ngIf="f['apellido'].errors?.['minlength']">El apellido debe tener al menos 3 caracteres.</small>
+            <small *ngIf="f['apellido'].errors?.['pattern']">El apellido solo puede contener letras y espacios.</small>
+            </div>
+        </div>
+  
+        <!-- Edad -->
+        <div class="mb-3">
+          <label for="edad" class="form-label">Edad</label>
+          <input id="edad" formControlName="edad" type="number" class="form-control">
+          <div *ngIf="f['edad'].invalid && f['edad'].touched" class="text-danger">
+            <small *ngIf="f['edad'].errors?.['required']">La edad es obligatoria.</small>
+            <small *ngIf="f['edad'].errors?.['min']">Debe ser mayor de 18 años.</small>
+            <small *ngIf="f['edad'].errors?.['max']">Debe ser menor de 99 años.</small>
+          </div>
+        </div>
+  
+        <!-- Teléfono -->
+        <div class="mb-3">
+          <label for="telefono" class="form-label">Número de Teléfono</label>
+          <input id="telefono" formControlName="telefono" type="text" class="form-control">
+          <div *ngIf="f['telefono'].invalid && f['telefono'].touched" class="text-danger">
+            <small *ngIf="f['telefono'].errors?.['required']">El teléfono es obligatorio.</small>
+            <small *ngIf="f['telefono'].errors?.['pattern']">Debe tener 10 números y solo números.</small>
+          </div>
+        </div>
+  
+        <!-- Pregunta 1: Textbox -->
+        <div class="mb-3">
+            <label for="pregunta1" class="form-label">¿Cuál es tu juego favorito?</label> 
+            <select id="pregunta1" formControlName="pregunta1" class="form-select">
+              <option value="" disabled selected>Selecciona un juego</option> <!-- Placeholder -->
+              <option value="ahorcado">Ahorcado</option>
+              <option value="mayor-menor">Mayor o Menor</option>
+              <option value="aventura-global">Aventura Global</option>
+              <option value="letras-enredadas">Letras Enredadas</option>
+            </select>
+            <div *ngIf="f['pregunta1'].invalid && f['pregunta1'].touched" class="text-danger">
+              <small *ngIf="f['pregunta1'].errors?.['required']">Esta pregunta es obligatoria.</small>
+            </div>
+          </div>
+  
+       
+  
+        <!-- Pregunta 3: Radio Button -->
+        <div class="mb-3">
+          <label>¿Prefieres juegos de ingenio o de acción?</label>
+          <div>
+            <div class="form-check form-check-inline">
+              <input type="radio" formControlName="pregunta3" value="cafe" class="form-check-input">
+              <label class="form-check-label">Ingenio</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" formControlName="pregunta3" value="te" class="form-check-input">
+              <label class="form-check-label">Acción</label>
+            </div>
+          </div>
+          <div *ngIf="f['pregunta3'].invalid && f['pregunta3'].touched" class="text-danger">
+            <small *ngIf="f['pregunta3'].errors?.['required']">Esta pregunta es obligatoria.</small>
+          </div>
+        </div>
+
+         <!-- Pregunta 2: Checkbox -->
+         <div class="mb-3 form-check">
+            <input id="pregunta2" formControlName="pregunta2" type="checkbox" class="form-check-input">
+            <label for="pregunta2" class="form-check-label">Recomendaría esta página a un amigo.</label>
+            <div *ngIf="f['pregunta2'].invalid && f['pregunta2'].touched" class="text-danger">
+              <small *ngIf="f['pregunta2'].errors?.['required']">Esta pregunta es obligatoria.</small>
+            </div>
+          </div>
+  
+        <!-- Botón de enviar -->
+        <button type="submit" class="btn btn-primary w-100" style="background-color: rgb(172, 8, 194); border-color: #e100ff;" [disabled]="encuestaForm.invalid">
+          Enviar Encuesta
+        </button>
+  
+      </form>
+    </div>
+  </div>

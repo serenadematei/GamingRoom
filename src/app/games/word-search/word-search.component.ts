@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule, NgIf, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ResultadosService } from '../../services/resultados.service';
 
 @Component({
   selector: 'app-word-search',
@@ -36,7 +37,7 @@ export class WordSearchComponent implements OnInit{
   ];
 
   selectedCategory: { name: string, words: string[] } | null = null;
-  grid: string[][] = [];
+  grid: string[][] = []; //MATRIZ PARA CUADRICULA
   foundWords: Set<string> = new Set();
   selectedWord: string = '';
   selectedCells: { row: number, col: number }[] = [];
@@ -48,7 +49,9 @@ export class WordSearchComponent implements OnInit{
   timerInterval: any;
   totalTimeTaken: number = 0;
 
-  constructor(private router: Router) {}
+  selectedDirection: string | null = null;//
+
+  constructor(private router: Router, private resultadosService:ResultadosService) {}
   
   ngOnInit() {
     this.startNewGame();
@@ -82,14 +85,14 @@ export class WordSearchComponent implements OnInit{
 
   generateGrid() {
     if (!this.selectedCategory) return;
-    this.grid = Array.from({ length: 10 }, () => Array(10).fill(''));
-    this.selectedCategory.words.forEach(word => {
+    this.grid = Array.from({ length: 10 }, () => Array(10).fill('')); //matriz de 10x10
+    this.selectedCategory.words.forEach(word => {//la lleno con las palabras de categoria
       this.placeWordInGrid(word);
     });
-    this.fillEmptyCells();
+    this.fillEmptyCells(); //lleno las celdas vacias con letras random
   }
 
-  placeWordInGrid(word: string) {
+  placeWordInGrid(word: string) { 
     const length = word.length;
     let placed = false;
     while (!placed) {
@@ -126,37 +129,107 @@ export class WordSearchComponent implements OnInit{
     });
   }
 
+
   selectCell(row: number, col: number) {
     const cell = { row, col };
+  
+   
     if (this.selectedCells.some(c => c.row === row && c.col === col)) {
       return;
     }
-    this.selectedCells.push(cell);
-    this.selectedWord += this.grid[row][col];
+    
+    if (this.selectedCells.length === 0) {
+      this.selectedCells.push(cell);
+      this.selectedWord += this.grid[row][col];
+      return;
+    }
+  
+    const lastCell = this.selectedCells[this.selectedCells.length - 1];
+  
+    if (this.selectedCells.length === 1) {
+      if (row === lastCell.row && col === lastCell.col + 1) {
+        this.selectedDirection = 'right';
+      } else if (row === lastCell.row && col === lastCell.col - 1) {
+        this.selectedDirection = 'left';
+      } else if (col === lastCell.col && row === lastCell.row + 1) {
+        this.selectedDirection = 'down';
+      } else if (col === lastCell.col && row === lastCell.row - 1) {
+        this.selectedDirection = 'up';
+      } else {
+        return;
+      }
+  
+      this.selectedCells.push(cell);
+      this.selectedWord += this.grid[row][col];
+      return;
+    }
+  
+
+    switch (this.selectedDirection) {
+      case 'right':
+        if (row === lastCell.row && col === lastCell.col + 1) {
+          this.selectedCells.push(cell);
+          this.selectedWord += this.grid[row][col];
+        }
+        break;
+      case 'left':
+        if (row === lastCell.row && col === lastCell.col - 1) {
+          this.selectedCells.push(cell);
+          this.selectedWord += this.grid[row][col];
+        }
+        break;
+      case 'down':
+        if (col === lastCell.col && row === lastCell.row + 1) {
+          this.selectedCells.push(cell);
+          this.selectedWord += this.grid[row][col];
+        }
+        break;
+      case 'up':
+        if (col === lastCell.col && row === lastCell.row - 1) {
+          this.selectedCells.push(cell);
+          this.selectedWord += this.grid[row][col];
+        }
+        break;
+    }
   }
+
 
   isSelected(row: number, col: number): boolean {
     return this.selectedCells.some(c => c.row === row && c.col === col);
   }
 
 
-    submitWord() {
-      if (this.selectedCategory?.words.includes(this.selectedWord)) {
-        this.foundWords.add(this.selectedWord);
-        this.feedbackMessage = this.getRandomPositiveMessage();
-        if (this.foundWords.size === this.selectedCategory.words.length) {
-          this.gameOver = true;
-          this.stopTimer();
-          this.feedbackMessage = '¡Bravo! Encontraste todas las palabras';
-          this.calculateScore();
-        }
-      } else {
-        this.feedbackMessage = this.getRandomNegativeMessage();
-      }
-      this.selectedWord = '';
-      this.selectedCells = [];
-    }
 
+        submitWord() {
+          if (this.selectedCategory?.words.includes(this.selectedWord)) {
+            this.selectedCells.forEach(cell => {
+              const element = document.getElementById(`cell-${cell.row}-${cell.col}`) as HTMLButtonElement;
+              if (element) {
+                element.classList.add('found'); 
+              }
+            });
+        
+            this.foundWords.add(this.selectedWord);
+            this.feedbackMessage = this.getRandomPositiveMessage();
+        
+            if (this.foundWords.size === this.selectedCategory.words.length) {
+              this.gameOver = true;
+              this.stopTimer();
+              this.feedbackMessage = '¡Bravo! Encontraste todas las palabras';
+              this.calculateScore();
+            }
+          } else {
+            this.feedbackMessage = this.getRandomNegativeMessage();
+          }
+
+          this.selectedWord = '';
+          this.selectedCells = [];
+        }
+
+      isFound(row: number, col: number): boolean {
+        return this.selectedCells.some(c => c.row === row && c.col === col) && this.foundWords.has(this.selectedWord);
+      }
+ 
     stopTimer() {
       clearInterval(this.timerInterval);
       this.totalTimeTaken = this.timeElapsed;
@@ -174,6 +247,7 @@ export class WordSearchComponent implements OnInit{
         } else {
           this.score = 25;
         }
+        this.finalizarJuego();
       }
 
   resetSelection() {
@@ -201,6 +275,25 @@ export class WordSearchComponent implements OnInit{
   getRandomNegativeMessage(): string {
     const randomIndex = Math.floor(Math.random() * this.negativeMessages.length);
     return this.negativeMessages[randomIndex];
+  }
+
+  finalizarJuego() {
+    // Guardar el resultado del juego
+    if(this.score > 0 )
+    {
+      this.resultadosService.guardarResultado('Letras Enredadas', this.score)
+      .then(() => {
+        console.log('Puntaje guardado con éxito');
+      })
+      .catch(error => {
+        console.log('Error al guardar el resultado: ', error);
+      });
+    }
+    else
+    {
+      console.log("Puntaje 0, no lo guardo");
+    }
+    
   }
 }
 

@@ -2,6 +2,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
 import { CommonModule, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ResultadosService } from '../../services/resultados.service';
 
 interface Card {
   suit: string;
@@ -37,7 +38,7 @@ export class HigherLowerComponent implements OnInit {
   higherLowerButtons:boolean =false;
   isCardFlipped: boolean = true;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private resultadosService:ResultadosService) { }
 
   ngOnInit(): void {
     this.initializeDeck();
@@ -100,6 +101,7 @@ export class HigherLowerComponent implements OnInit {
     this.isCardFlipped = false; //
     if (!this.nextCard) {
       this.gameOver = true;
+      this.finalizarJuego();
     }
   }
 
@@ -116,6 +118,25 @@ export class HigherLowerComponent implements OnInit {
 
   goToHome(): void {
     this.router.navigate(['/home']);
+  }
+
+  finalizarJuego() {
+    // Guardar el resultado del juego
+    if(this.score > 0 )
+    {
+      this.resultadosService.guardarResultado('Mayor Menor', this.score)
+      .then(() => {
+        console.log('Puntaje guardado con éxito');
+      })
+      .catch(error => {
+        console.log('Error al guardar el resultado: ', error);
+      });
+    }
+    else
+    {
+      console.log("Puntaje 0, no lo guardo");
+    }
+    
   }
 }
 

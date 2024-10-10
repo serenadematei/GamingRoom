@@ -4,6 +4,7 @@ import { CountriesService } from '../../services/countries.service';
 import { CommonModule, NgIf, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ResultadosService } from '../../services/resultados.service';
 
 @Component({
   selector: 'app-trivia',
@@ -23,7 +24,7 @@ export class TriviaComponent implements OnInit {
   status:string = "Starting"
   optionsAvailable:boolean=false
 
-  constructor(private countriesService: CountriesService, private router: Router) {}
+  constructor(private countriesService: CountriesService, private router: Router, private resultadosService:ResultadosService) {}
 
   ngOnInit() {
     this.countriesService.getAllCountries().subscribe(data => {
@@ -74,7 +75,7 @@ export class TriviaComponent implements OnInit {
         this.errors++;
         if (this.errors >= 3) {
           setTimeout(() => {
-            
+            this.finalizarJuego();
           }, 1000);
           return;
         }
@@ -104,6 +105,25 @@ export class TriviaComponent implements OnInit {
       [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
+  }
+
+  finalizarJuego() {
+    // Guardar el resultado del juego
+    if(this.score > 0 )
+    {
+      this.resultadosService.guardarResultado('Aventura Global', this.score)
+      .then(() => {
+        console.log('Puntaje guardado con éxito');
+      })
+      .catch(error => {
+        console.log('Error al guardar el resultado: ', error);
+      });
+    }
+    else
+    {
+      console.log("Puntaje 0, no lo guardo");
+    }
+    
   }
 }
 

@@ -8,6 +8,8 @@
         <li *ngIf="!user" class="nav-item"><a routerLink="/register" class="nav-link">Registrarse</a></li>
         <li *ngIf="!user" class="nav-item"><a routerLink="/about-me" class="nav-link">Sobre mi</a></li>
         <li *ngIf="user" class="nav-item"><a routerLink="/chat" class="nav-link">Chat</a></li>
+        <li *ngIf="user" class="nav-item"><a routerLink="/listado-resultados" class="nav-link">Resultados</a></li>
+        <li *ngIf="user" class="nav-item"><a routerLink="/encuesta" class="nav-link">Encuesta</a></li>
         <li *ngIf="user" class="nav-item"><a routerLink="/about-me" class="nav-link">Sobre mi</a></li>
         <li *ngIf="user" class="nav-item"><a (click)="logout()" class="nav-link">Cerrar sesión</a></li>
       </ul>
