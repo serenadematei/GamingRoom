@@ -128,7 +128,7 @@ export class HangmanComponent implements OnInit {
   }
 
   finalizarJuego() {
-    // Guardar el resultado del juego
+   
     if(this.score > 0 )
     {
       this.resultadosService.guardarResultado('Ahorcado', this.score)

@@ -1,18 +1,17 @@
 <div class="juegos-container">
     <h2>Seleccione un juego para ver los resultados</h2>
   
-    <!-- Botones para seleccionar el juego -->
+
     <div class="juegos-list">
       <button *ngFor="let juego of juegos" (click)="seleccionarJuego(juego)">
         {{ juego }}
       </button>
     </div>
   
-    <!-- Mostrar el nombre del juego seleccionado -->
+
     <div *ngIf="juegoSeleccionado" class="resultados-section">
       <h3>Resultados de {{ juegoSeleccionado }}</h3>
-  
-      <!-- Tabla de resultados -->
+
       <table *ngIf="resultados.length > 0">
         <thead>
           <tr>
@@ -30,7 +29,7 @@
         </tbody>
       </table>
   
-      <!-- Mensaje cuando no hay resultados -->
+     
       <p *ngIf="resultados.length === 0">No hay resultados para este juego.</p>
     </div>
   </div>

@@ -25,44 +25,42 @@ export class EncuestaComponent implements OnInit {
       apellido: ['', [Validators.required, Validators.minLength(3), Validators.pattern('^[a-zA-Z\\s]+$')]],
       edad: ['', [Validators.required, Validators.min(18), Validators.max(99)]],
       telefono: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-      pregunta1: ['', Validators.required], // Por ejemplo: textbox
-      pregunta2: [false], // Por ejemplo: checkbox
-      pregunta3: ['', Validators.required]  // Por ejemplo: radiobutton
+      pregunta1: ['', Validators.required], 
+      pregunta2: [false], 
+      pregunta3: ['', Validators.required]  
     });
   }
 
 
   async onSubmit(): Promise<void> {
     if (this.encuestaForm.valid) {
-      const respuestas = this.encuestaForm.value; // Obtener los valores del formulario
+      const respuestas = this.encuestaForm.value; 
       try {
-        await this.resultadosService.guardarEncuesta(respuestas); // Guardar las respuestas en Firebase
+        await this.resultadosService.guardarEncuesta(respuestas); 
         
-        // SweetAlert de éxito
         Swal.fire({
           title: '¡Respuesta enviada!',
           text: 'Gracias por contestar la encuesta.',
           icon: 'success',
           confirmButtonText: 'OK'
         }).then(() => {
-          this.router.navigate(['/home']); // Redirigir a la página de inicio
+          this.router.navigate(['/home']); 
         });
 
       } catch (error) {
         console.error('Error al guardar la encuesta:', error);
-        
-        // SweetAlert de error
+
         Swal.fire({
           title: 'Error',
           text: 'Hubo un error al enviar la encuesta. Por favor, inténtelo nuevamente.',
           icon: 'error',
           confirmButtonText: 'OK'
         }).then(() => {
-          this.router.navigate(['/home']); // Redirigir a la página de inicio
+          this.router.navigate(['/home']); 
         });
       }
     } else {
-      // SweetAlert si el formulario no es válido
+
       Swal.fire({
         title: 'Formulario incompleto',
         text: 'Por favor, complete todos los campos correctamente.',
@@ -71,7 +69,7 @@ export class EncuestaComponent implements OnInit {
       });
     }
   }
-  // Obtener referencias fáciles para los controles del formulario en el template
+  
   get f() {
     return this.encuestaForm.controls;
   }

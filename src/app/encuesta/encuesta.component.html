@@ -4,7 +4,7 @@
   
       <form [formGroup]="encuestaForm" (ngSubmit)="onSubmit()">
         
-            <!-- Nombre -->
+           
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
             <input id="nombre" formControlName="nombre" type="text" class="form-control">
@@ -15,7 +15,7 @@
             </div>
         </div>
         
-        <!-- Apellido -->
+       
         <div class="mb-3">
             <label for="apellido" class="form-label">Apellido</label>
             <input id="apellido" formControlName="apellido" type="text" class="form-control">
@@ -26,7 +26,7 @@
             </div>
         </div>
   
-        <!-- Edad -->
+       
         <div class="mb-3">
           <label for="edad" class="form-label">Edad</label>
           <input id="edad" formControlName="edad" type="number" class="form-control">
@@ -37,7 +37,6 @@
           </div>
         </div>
   
-        <!-- Teléfono -->
         <div class="mb-3">
           <label for="telefono" class="form-label">Número de Teléfono</label>
           <input id="telefono" formControlName="telefono" type="text" class="form-control">
@@ -47,11 +46,11 @@
           </div>
         </div>
   
-        <!-- Pregunta 1: Textbox -->
+    
         <div class="mb-3">
             <label for="pregunta1" class="form-label">¿Cuál es tu juego favorito?</label> 
             <select id="pregunta1" formControlName="pregunta1" class="form-select">
-              <option value="" disabled selected>Selecciona un juego</option> <!-- Placeholder -->
+              <option value="" disabled selected>Selecciona un juego</option> 
               <option value="ahorcado">Ahorcado</option>
               <option value="mayor-menor">Mayor o Menor</option>
               <option value="aventura-global">Aventura Global</option>
@@ -64,7 +63,7 @@
   
        
   
-        <!-- Pregunta 3: Radio Button -->
+  
         <div class="mb-3">
           <label>¿Prefieres juegos de ingenio o de acción?</label>
           <div>
@@ -82,7 +81,7 @@
           </div>
         </div>
 
-         <!-- Pregunta 2: Checkbox -->
+         
          <div class="mb-3 form-check">
             <input id="pregunta2" formControlName="pregunta2" type="checkbox" class="form-check-input">
             <label for="pregunta2" class="form-check-label">Recomendaría esta página a un amigo.</label>
@@ -91,7 +90,7 @@
             </div>
           </div>
   
-        <!-- Botón de enviar -->
+      
         <button type="submit" class="btn btn-primary w-100" style="background-color: rgb(172, 8, 194); border-color: #e100ff;" [disabled]="encuestaForm.invalid">
           Enviar Encuesta
         </button>

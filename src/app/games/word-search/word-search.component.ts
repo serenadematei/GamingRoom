@@ -278,7 +278,6 @@ export class WordSearchComponent implements OnInit{
   }
 
   finalizarJuego() {
-    // Guardar el resultado del juego
     if(this.score > 0 )
     {
       this.resultadosService.guardarResultado('Letras Enredadas', this.score)

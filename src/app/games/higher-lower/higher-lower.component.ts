@@ -121,7 +121,7 @@ export class HigherLowerComponent implements OnInit {
   }
 
   finalizarJuego() {
-    // Guardar el resultado del juego
+    
     if(this.score > 0 )
     {
       this.resultadosService.guardarResultado('Mayor Menor', this.score)

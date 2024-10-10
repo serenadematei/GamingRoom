@@ -108,7 +108,7 @@ export class TriviaComponent implements OnInit {
   }
 
   finalizarJuego() {
-    // Guardar el resultado del juego
+ 
     if(this.score > 0 )
     {
       this.resultadosService.guardarResultado('Aventura Global', this.score)

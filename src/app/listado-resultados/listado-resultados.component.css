@@ -10,26 +10,26 @@
 
 button {
   padding: 10px 20px;
-  background-color: rgb(172, 8, 194); /* Color de fondo ajustado */
-  color: white; /* Letra blanca */
+  background-color: rgb(172, 8, 194); 
+  color: white; 
   border: none;
-  border-color: #e100ff; /* Color del borde */
+  border-color: #e100ff; 
   cursor: pointer;
-  border-radius: 10px; /* Bordes redondeados */
+  border-radius: 10px; 
   transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #e100ff; /* Color de fondo al hacer hover */
+  background-color: #e100ff; 
 }
 
 .resultados-section {
   margin-top: 20px;
-  color: white; /* Letras en blanco */
+  color: white; 
 }
 
 h2, h3 {
-  color: white; /* Letras en blanco para los títulos */
+  color: white; 
 }
 
 table {
@@ -45,6 +45,6 @@ table, th, td {
 th, td {
   padding: 10px;
   text-align: left;
-  color: white; /* Letra blanca en la tabla */
-  background-color: #343a40; /* Fondo oscuro en celdas para mayor contraste */
+  color: white; 
+  background-color: #343a40; 
 }
